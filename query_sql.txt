@@ -1,0 +1,67 @@
+1. Seleziona gli utenti che hanno postato almeno un video
+SELECT `users`.`username`, COUNT(*) AS `posted_videos`
+FROM `users`
+JOIN `posts` ON `user_id` = `users`.`id`
+JOIN `media_post` ON `post_id` = `posts`.`id`
+JOIN `medias` ON `media_id` = `medias`.`id`
+WHERE `medias`.`type` = 'video'
+GROUP BY `users`.`username`;
+
+
+
+2. Seleziona tutti i post senza Like (13)
+SELECT `posts`.`title`
+FROM `posts`
+LEFT JOIN `likes` ON `post_id` = `posts`.`id`
+WHERE `likes`.`date` IS NULL;
+
+
+
+3. Conta il numero di like per ogni post (165)
+
+Soluzione un po' casareccia ma che riesce a contare tutti i 165 post con il corrispettivo numero di like. Usando l'union, i post con 0 like si posizionano automaticamente tutti in fondo
+
+SELECT `posts`.`title` AS `post_title`, COUNT(*) AS `likes_no`
+FROM `posts`
+JOIN `likes` ON `likes`.`post_id` = `posts`.`id`
+GROUP BY `likes`.`post_id`
+UNION 
+SELECT `posts`.`title` AS `post_title`, IFNULL(`posts`.`updated_at`, 0)
+FROM `posts`
+LEFT JOIN `likes` ON `post_id` = `posts`.`id`
+WHERE `likes`.`date` IS NULL; (165)
+
+-------------------------------------------------------------------------------------------------------
+Soluzione standard
+
+SELECT `posts`.`title` AS `post_title`, COUNT(*) AS `likes_no`
+FROM `posts`
+JOIN `likes` ON `likes`.`post_id` = `posts`.`id`
+GROUP BY `likes`.`post_id`; (152)
+
+-------------------------------------------------------------------------------------------------------
+Soluzione incorretta
+
+SELECT `posts`.`title` AS `post_title`, COUNT(*) AS `likes_no`
+FROM `posts`
+RIGHT JOIN `likes` ON `post_id` = `posts`.`id`
+GROUP BY `likes`.`post_id`;(175???)
+
+
+
+4. Ordina gli utenti per il numero di media caricati (25) 
+SELECT `users`.`username` AS `username`, COUNT(*) AS `medias_no`
+FROM `medias`
+JOIN `users` ON `medias`.`user_id` =  `users`.`id`
+GROUP BY `user_id`
+ORDER BY `medias_no` DESC;
+
+
+
+5. Ordina gli utenti per totale di likes ricevuti nei loro posts (25)
+SELECT `users`.`username` AS `nome`, COUNT(*) AS `likes_no`
+FROM `likes`
+JOIN `posts` ON `likes`.`post_id` = `posts`.`id`
+JOIN `users` ON `posts`.`user_id` =  `users`.`id`
+GROUP BY `users`.`username`
+ORDER BY `likes_no` DESC;
