@@ -23,7 +23,7 @@ GROUP BY `users`.`username`
 ORDER BY `likes_no` DESC;";
 
 $result = $connection->query($sql);
-var_dump($result);
+//var_dump($result);
 
 ?>
 <!DOCTYPE html>
@@ -33,27 +33,33 @@ var_dump($result);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     <!-- TOGLIERE IL COMMENTO PER ABILITARE LO SCHEMA DI DRAWIO
         <img src="./schema.png" alt=""> -->
-    <div class="container-">
+    <h1>Most liked!</h1>
+    <div class="container">
         <div class="row">
             <?php while ($row = $result->fetch_assoc()) :
                 ['nome' => $nome, 'likes_no' => $likes] = $row; ?>
-                <div>
-                    <h3>Nome utente: </h3>
-                    <p><?= $nome ?></p>
-                    <h4>Numero di likes: </h4>
-                    <p><?= $likes ?></p>
+                <div class="card">
+                    <h3><?= $nome ?></h3>
+                    <div>
+                        <span><?= $likes ?></span>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
                 </div>
             <?php endwhile; ?>
         </div>
     </div>
-
-
-
-
 </body>
+
 </html>
