@@ -1,5 +1,7 @@
 <?php
 
+include_once __DIR__ . '/app/Models/Post.php';
+
 /*db connection*/
 define('DB_SERVERNAME', 'localhost');
 define('DB_USERNAME', 'root');
@@ -66,7 +68,6 @@ $result = $connection->query($sql);
 
                 //Variabile di supporto che mette che viene riassegnata di volta in volta a termine del ciclo con il nuovo numero di likes. La inserisco alla fine in modo da poter paragonare i Likes della persona nella posizione precedente a quella della persona subito successiva
                 $ranker = $row['likes_no'];
-
             ?>
             
                 <div class="card 
