@@ -18,6 +18,8 @@ h1 {
     color: #000a9b;
 }
 
+/*UTILITY*/
+
 .container {
     width: 80%;
     max-width: 1176px;
@@ -30,23 +32,78 @@ h1 {
     margin: 0 -1rem;
     justify-content: center;
 }
+/*FINE UTILITY*/
+
+/*CARD*/
 
 .card {
+    /*Specifiche generiche della card*/
     width: calc((100%/10)*2 - 2rem);
     margin: 1rem;
     padding: 0.5rem 1rem;
-    background-color: rgb(225, 190, 101, 0.8);
     border-radius: 30px;
     line-height: 30px;
     cursor: pointer;
     box-shadow: 5px 5px 5px 5px #4d4dcd;
+    /*Specifiche per le barre del luccichio e per il numero di ranking sullo sfondo*/
+    position: relative;
+    overflow: hidden;
+    /*Parte di riferimento per le successive tipologie di background*/
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: Bggradient 4s ease infinite;
 
-    h3 {
-        color: #4d4dcd;
+    & .shiny_bar1 {
+        position: absolute;
+        top: 0;
+        left: -110%;
+        width: 7%;
+        height: 120%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: skewX(-45deg);
+        animation: shiny1 2s ease infinite
     }
 
-    i {
-        animation: gradient 5s ease infinite;
+    & .shiny_bar2 {
+        position: absolute;
+        top: 0;
+        left: -130%;
+        width: 12%;
+        height: 120%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: skewX(-45deg);
+        animation: shiny2 2s ease infinite
+    }
+
+    & .name {
+        font-size: 18px;
+        font-weight: 300;
+    }
+
+    & .likes {
+        font-size: 30px;
+        font-weight: 400;
+    }
+
+    & .panel-number {
+        position: relative;
+
+        & .ranking {
+            font-size: 60px;
+            font-weight: 100;
+            position: absolute;
+            top: 45px;
+            left: 140px;
+            right: 0;
+            opacity: 0.15;
+        }
+    }
+
+
+    & i {
+        font-size: 1.7em;
+        color: #3d0101;
+        opacity: 0.5;
     }
 }
 
@@ -54,41 +111,198 @@ h1 {
     background-color: rgb(225, 190, 101, 1);
     filter: drop-shadow(0px 6px 8px #4d4dcd);
 
-    h3 {
-        color: #000dc5;
+    & .name {
+        font-weight: 400;
     }
 
-    i {
-        animation-play-state: paused;
+    & .likes {
+        font-weight: 500;
+    }
+
+    & .ranking {
+        font-weight: 300;
+        animation: pulse 5s ease infinite;
+
+    }
+
+    & i {
+        color: #3d0101;
+        opacity: 1;
     }
 }
 
+/*FINE CARD*/
 
-@keyframes gradient {
+
+/*STILI BACKGROUND*/
+
+.bronze {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #dcb9b5 0%, #e5a389 8%, #7d594f 30%, #583c38 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #edcfcc 8%, #f5b69e 25%, #48312e 62.5%, #48312e 100%);
+
+    & .panel-number {
+        & .ranking {
+
+            left: 115px;
+
+        }
+    }
+
+}
+
+.silver {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #eff8fd 0%, #a9b6c6 8%, #5a6876 30%, #353c41 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #f7f9fa 8%, #b5c3d5 25%, #292f33 62.5%, #292f33 100%);
+
+    & .panel-number {
+        & .ranking {
+
+            left: 115px;
+
+        }
+    }
+
+}
+
+.golden {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
+.platinum {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #9fedf4 0%, #136da8 8%, #125e77 30%, #073b4d 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #b0f8ff 8%, #198edd 25%, #1c5f70 62.5%, #1c5f70 100%);
+
+
+}
+
+.pink-diamond {
+    background: radial-gradient(ellipse farthest-corner at right bottom, #fce7fb 0%, #fcb7fd 8%, #d77af2 30%, #672fa1 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #f8f4f8 8%, #f8caf9 25%, #572b87 62.5%, #572b87 100%);
+
+}
+/*FINE STILI BACKGROUND*/
+
+/*ANIMAZIONI*/
+
+/*Animazione per rendere cangiante lo sfondo delle cards*/
+@keyframes Bggradient {
 
     0% {
-        color: #4848e0;
+        opacity: 1;
+        background-size: 100%;
     }
 
-    20% {
-        color: #a939d2;
-    }
-
-    40% {
-        color: #e04848;
-    }
-
-    60% {
-        color: #a3e048;
-    }
-
-    80% {
-        color: #48e0a8;
+    50% {
+        opacity: 0.95;
+        background-size: 175%;
     }
 
     100% {
-        color: #4848e0;
+        opacity: 1;
+        background-size: 100%;
+    }
+
+}
+
+
+
+/*Animazione degli span per la lucidità delle cards*/
+@keyframes shiny1 {
+
+    0% {
+        left: -110%;
+        opacity: 0;
+    }
+
+    5% {
+        left: -110%;
+        opacity: 0.3;
+    }
+
+    80% {
+        left: 130%;
+        opacity: 0.3
+    }
+
+    90% {
+        left: 130%;
+        opacity: 0;
+    }
+
+    100% {
+        left: -110%;
+        opacity: 0;
+    }
+
+}
+
+@keyframes shiny2 {
+
+    0% {
+        left: -130%;
+        opacity: 0;
+    }
+
+    5% {
+        left: -130%;
+        opacity: 0.3;
+    }
+
+    80% {
+        left: 110%;
+        opacity: 0.3
+    }
+
+    90% {
+        left: 110%;
+        opacity: 0;
+    }
+
+    100% {
+        left: -130%;
+        opacity: 0;
+    }
+
+}
+
+
+
+/*Colore del ranking cangiante*/
+@keyframes pulse {
+
+    0% {
+        opacity: 0.15;
+        color: #000000;
+    }
+
+    20% {
+        color: #020080;
+    }
+
+    40% {
+        color: #690087;
+    }
+
+    50% {
+        opacity: 0.5;
+        color: #650000;
+    }
+
+    60% {
+        color: #690087;
+    }
+
+    80% {
+        color: #020080;
+    }
+
+    100% {
+        opacity: 0.15;
+        color: #000000;
     }
 
 
 }
+
+/*FINE ANIMAZIONI*/
