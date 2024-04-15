@@ -1,7 +1,5 @@
 <?php
 
-include_once __DIR__ . '/app/Models/Post.php';
-
 /*db connection*/
 define('DB_SERVERNAME', 'localhost');
 define('DB_USERNAME', 'root');
@@ -91,6 +89,10 @@ $result = $connection->query($sql);
                     </div>
                 </div>
             <?php endwhile; ?>
+        </div>
+        <h3>Vai alla seconda parte dell'esercizio</h3>
+        <div class="other_page">
+        <a href="step4_oop.php" class="button">Step 4 (OOP)</a><i class="fa-solid fa-arrow-right"></i>
         </div>
     </div>
 </body>

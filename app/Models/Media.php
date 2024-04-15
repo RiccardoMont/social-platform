@@ -1,16 +1,28 @@
 <?php
 
 class Media {
+    //Dichiaro la variabile type per poterle assegnare un valore in seguito tramite le indicazioni con i condizionali
+    protected string $type;
 
-    
-
-    function __construct(protected int $id, protected int $user_id, protected string $type, protected string $path, protected string $created_at)
+    function __construct(protected int $id, protected int $user_id, protected string $path, protected string $created_at)
     {
         $this->id = $id;
         $this->user_id = $user_id;
-        $this->type = $type;
         $this->path = $path;
         $this->created_at = $created_at;
+        
+        if(substr($path, -3) == 'jpg'){
+            $this->type = 'photo';
+        }
+        elseif(substr($path, -3) == 'mp4'){
+            $this->type = 'video';
+        }
+        else{
+            $this->type = 'Not supported media';
+        }
+
+        
+
     }
 
 
@@ -43,7 +55,3 @@ class Media {
 
 }
 
-
-
-$prova = new Media(21, 12, 'video', 'scascvavva', '2019-01-03');
-//var_dump($prova);

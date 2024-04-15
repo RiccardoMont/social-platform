@@ -24,14 +24,18 @@ h1 {
     width: 80%;
     max-width: 1176px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -1rem;
+    margin: 0 -1rem 3rem -1rem;
     justify-content: center;
 }
+
 /*FINE UTILITY*/
 
 /*CARD*/
@@ -90,7 +94,7 @@ h1 {
 
         & .ranking {
             font-size: 60px;
-            font-weight: 100;
+            font-weight: 300;
             position: absolute;
             top: 45px;
             left: 140px;
@@ -120,7 +124,7 @@ h1 {
     }
 
     & .ranking {
-        font-weight: 300;
+        font-weight: 500;
         animation: pulse 5s ease infinite;
 
     }
@@ -132,6 +136,29 @@ h1 {
 }
 
 /*FINE CARD*/
+
+/*CARD STEP4_OOP*/
+
+.card-step4 {
+
+
+    margin: 1rem;
+    padding: 1rem 2rem;
+    border: 2px solid black;
+
+    
+
+    & div {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+    }
+
+
+}
+
+/*FINE CARD STEP4_OOP*/
 
 
 /*STILI BACKGROUND*/
@@ -181,7 +208,40 @@ h1 {
         radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #f8f4f8 8%, #f8caf9 25%, #572b87 62.5%, #572b87 100%);
 
 }
+
 /*FINE STILI BACKGROUND*/
+
+.other_page{
+    margin: 1rem 0 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/*BUTTON STEP 3-4*/
+
+.button {
+    background-color: #3639f4;
+    color: white;
+    max-width: 200px;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    text-decoration: none;
+    opacity: 0.75;
+    
+}
+
+.button:hover {
+    opacity: 1;
+}
+
+/*FINE BUTTON STEP 3-4*/
+
+
+
+
+
 
 /*ANIMAZIONI*/
 

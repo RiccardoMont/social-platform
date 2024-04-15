@@ -1,11 +1,12 @@
 <?php
 
-include_once __DIR__ . '/Media.php';
+require_once __DIR__ . '/Media.php';
 
 
 class Post
 {
 
+    //L'ultimo parametro che si occupa dei media, essendo un array, mi permette di poter inserire più di un elemento
     function __construct(protected int $id, protected int $user_id, protected string $title, protected string $date, protected array $tags, protected string $created_at, protected array $medias)
     {
 
@@ -15,7 +16,9 @@ class Post
         $this->date = $date;
         $this->tags = $tags;
         $this->created_at = $created_at;
+        if(!empty($medias)){
         $this->medias = $medias;
+        }
     }
 
 
@@ -56,10 +59,3 @@ class Post
     }
 }
 
-
-$provaPost = new Post(1, 2, 'eccoci', '2011-04-05', ['estate', 'divertimento', 'mare'], '2011-03-02', [new Media(2, 5, 'foto', 'cartelletta', '2010-08-08'), new Media(6, 12, 'video', 'zaino', '2009-01-01')]);
-//var_dump($provaPost);
-
-var_dump($provaPost->get_title());
-var_dump($provaPost->get_medias());
-var_dump($provaPost->get_medias()[1]->get_id());
