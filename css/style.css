@@ -32,7 +32,7 @@ h1 {
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -1rem 3rem -1rem;
+    margin: 0 -1rem 2rem -1rem;
     justify-content: center;
 }
 
@@ -212,7 +212,6 @@ h1 {
 /*FINE STILI BACKGROUND*/
 
 .other_page{
-    margin: 1rem 0 2rem 0;
     display: flex;
     align-items: center;
     gap: 1rem;

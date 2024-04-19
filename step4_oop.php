@@ -20,7 +20,6 @@ require_once __DIR__ . '/db/test_db.php';
     <em>In un nuovo file, vengono istanziati almeno due oggetti Post e stampati a schermo i valori delle relative proprietà</em>
     <!--Per svolgere questa traccia ho creato manualmente un file che potesse fungere da database ed ho stampato poi i suoi dati qui in pagina-->
         <div class="row">
-            
             <?php //Ciclo all'interno dell'array $posts ed utilizzo i getters per poter leggere le proprietà protette
             foreach($posts as $post) :?>
                 <div class="card-step4">
@@ -46,16 +45,15 @@ require_once __DIR__ . '/db/test_db.php';
                                 <span>User_id: <?= $media->get_user_id() ?></span>
                                 <span>Path: <?= $media->get_path() ?></span>
                                 <span>Creato il: <?= $media->get_created_at() ?></span>
-
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <h3>Torna alla prima parte dell'esercizio</h3>
         <div class="other_page">
         <i class="fa-solid fa-arrow-left"></i><a href="index.php" class="button">Step 3 (php-mysqli)</a>
+        <a href="bonus_step4_oop.php" class="button">Bonus</a><i class="fa-solid fa-arrow-right"></i>
         </div>
     </div>
 </body>

@@ -11,6 +11,7 @@ class Media {
         $this->path = $path;
         $this->created_at = $created_at;
         
+        //Tramite questo condizionale analizzo le ultime tre lettere della stringa del path capendone così l'estensione
         if(substr($path, -3) == 'jpg'){
             $this->type = 'photo';
         }
