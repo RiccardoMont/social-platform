@@ -39,3 +39,4 @@ foreach($result as $user){
 
 }
 
+$connection->close();

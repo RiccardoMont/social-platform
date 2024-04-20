@@ -54,6 +54,7 @@ SELECT `users`.`username` AS `username`, COUNT(*) AS `medias_no`
 FROM `medias`
 JOIN `users` ON `medias`.`user_id` =  `users`.`id`
 GROUP BY `user_id`
+//HAVING `medias_no` > 5
 ORDER BY `medias_no` DESC;
 
 

@@ -23,7 +23,7 @@ GROUP BY `users`.`username`
 ORDER BY `likes_no` DESC;";
 
 $result = $connection->query($sql);
-
+$connection->close();
 
 ?>
 <!DOCTYPE html>
